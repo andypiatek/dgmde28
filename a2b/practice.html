@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Practice</title>
+    <script>
+      function timesTable(n) {
+        for (i = 1; i <= 12; i++) {
+          console.log(n + " x " + i + " = " + n * i);
+          document.write("<p>" + n + " x " + i + " = " + n * i + "</p>");
+        }
+      }
+    </script>
+    <style>
+      body {
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 1.2rem;
+
+      }
+      .container {
+        text-align: center;
+        margin-top: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Times Table</h1>
+      <script>
+        let n = prompt("Enter a number:");
+        timesTable(n);
+      </script>
+    </div>
+  </body>
+</html>
+
