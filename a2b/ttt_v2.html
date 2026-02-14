@@ -1,0 +1,147 @@
+<!-- 
+ 
+Published site: https://andypiatek.github.io/dgmde28/a2b/ttt_v2.html
+
+-->
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tic-Tac-Toe Game v2</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family:
+          "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+        background-color: rgb(10, 33, 71);
+      }
+      .header {
+        text-align: center;
+        margin-top: 50px;
+      }
+      h1 {
+        font-size: 3rem;
+        color: rgb(255, 255, 255);
+      }
+      #box-container {
+        display: flex;
+        flex-wrap: wrap;
+        max-width: 330px;
+        width: 100%;
+        margin: 20px auto;
+        justify-content: center;
+      }
+      .square {
+        width: 100px;
+        height: 100px;
+        margin: 5px;
+        background-color: rgb(255, 255, 255);
+        border: 1px solid rgb(0, 0, 0);
+        font-size: 2.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: rgb(44, 44, 44);
+      }
+      .square:hover {
+        background-color: rgb(117, 214, 153);
+        cursor: pointer;
+      }
+      .footer {
+        text-align: center;
+        margin: 40px auto;
+      }
+
+      button.start {
+        display: block;
+        margin: 20px auto;
+        padding: 10px 20px;
+        font-size: 1.2rem;
+        background-color: rgb(117, 214, 153);
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      button.start:hover {
+        background-color: rgb(153, 117, 214);
+      }
+
+      a {
+        color: rgb(255, 255, 255);
+        text-decoration: none;
+        font-size: 1.2rem;
+      }
+
+      a:hover {
+        color: rgb(117, 214, 153);
+      }
+
+      .turn h2 {
+        text-align: center;
+        margin: 20px auto;
+        font-size: 1.5rem;
+        color: rgb(255, 255, 255);
+        border: 1px solid rgb(255, 255, 255);
+        width: 300px;
+        padding: 10px;
+      }
+
+      .name {
+        font-weight: bold;
+        color: rgb(153, 117, 214);
+      }
+
+      @media (max-width: 600px) {
+        .box {
+          background-color: rgb(0, 0, 0);
+          color: rgb(255, 255, 255);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="header">
+        <h1>Tic Tac Toe Game</h1>
+      </div>
+    </header>
+    <main>
+      <div class="turn">
+        <h2><span class="name">X</span>'s Turn</h2>
+      </div>
+      <div id="box-container">
+        <script>
+          const NUM_SQUARES = 9;
+          for (i = 0; i < NUM_SQUARES; i++) {
+            id = "sq" + i;
+            document.write("<div class='square' id='" + id + "'></div>");
+          }
+        </script>
+        <script>
+          // document.getElementById("sq1").textContent = "X";
+          // document.getElementById("sq2").textContent = "X";
+          // document.getElementById("sq8").textContent = "0";
+          document.getElementById("sq1").innerHTML = "X";
+          document.getElementById("sq2").innerHTML = "X";
+          document.getElementById("sq8").innerHTML = "0";
+        </script>
+      </div>
+      <button class="start">Start Game</button>
+    </main>
+    <footer>
+      <div class="footer">
+        <a href="https://en.wikipedia.org/wiki/Tic-tac-toe" target="_blank"
+          >Game Instructions</a
+        >
+      </div>
+    </footer>
+  </body>
+</html>

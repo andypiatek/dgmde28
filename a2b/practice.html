@@ -1,3 +1,9 @@
+<!-- 
+ 
+Published site: https://andypiatek.github.io/dgmde28/a2b/practice.html
+
+-->
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -5,12 +11,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Practice</title>
     <script>
+      // Problem 1: Times Table
+      // Display times table for the user provided number multipled by 1 through 12
       function timesTable(n) {
         for (i = 1; i <= 12; i++) {
           console.log(n + " x " + i + " = " + n * i);
           document.write("<p>" + n + " x " + i + " = " + n * i + "</p>");
         }
       }
+
+      // Problem 2: Fahrenheit to Celsius
+      // Take given temperature in Fahrenheit and convert it to Celsius
       function fahr2cels(ftemp) {
         return (ftemp - 32) * (5 / 9);
       }
@@ -27,13 +38,15 @@
     </style>
   </head>
   <body>
-    <h1>Assignment 2b: Tic Tac Toe part 2 plus JS Practice</h1>
     <div class="container">
+      <h1>Assignment 2b: Tic Tac Toe part 2 plus JS Practice</h1>
+      // Problem 1: Times Table
       <h2>Problem 1: Times Table</h2>
       <script>
         let n = prompt("Enter a number:");
         timesTable(n);
       </script>
+      // Problem 1: Times Table
       <h2>Problem 2: Fahrenheit to Celsius</h2>
       <script>
         document.write(
