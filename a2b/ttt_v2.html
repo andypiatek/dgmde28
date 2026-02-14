@@ -119,6 +119,9 @@ Published site: https://andypiatek.github.io/dgmde28/a2b/ttt_v2.html
       </div>
       <div id="box-container">
         <script>
+          // draw the 9 squares of the board
+          // square params are in the css
+          // square ids will be sq1, sq2,...
           const NUM_SQUARES = 9;
           for (i = 0; i < NUM_SQUARES; i++) {
             id = "sq" + i;
@@ -126,6 +129,7 @@ Published site: https://andypiatek.github.io/dgmde28/a2b/ttt_v2.html
           }
         </script>
         <script>
+          // This was a preffed option but the requirement was to use innerHTML instead of textContent
           // document.getElementById("sq1").textContent = "X";
           // document.getElementById("sq2").textContent = "X";
           // document.getElementById("sq8").textContent = "0";
