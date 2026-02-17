@@ -59,7 +59,7 @@ Published site: https://andypiatek.github.io/dgmde28/a2b/ttt_v2.html
         margin: 40px auto;
       }
 
-      button.start {
+      button#start {
         display: block;
         margin: 20px auto;
         padding: 10px 20px;
@@ -70,7 +70,7 @@ Published site: https://andypiatek.github.io/dgmde28/a2b/ttt_v2.html
         cursor: pointer;
       }
 
-      button.start:hover {
+      button#start:hover {
         background-color: rgb(153, 117, 214);
       }
 
@@ -84,7 +84,7 @@ Published site: https://andypiatek.github.io/dgmde28/a2b/ttt_v2.html
         color: rgb(117, 214, 153);
       }
 
-      .turn h2 {
+      #turn h2 {
         text-align: center;
         margin: 20px auto;
         font-size: 1.5rem;
@@ -94,7 +94,7 @@ Published site: https://andypiatek.github.io/dgmde28/a2b/ttt_v2.html
         padding: 10px;
       }
 
-      .name {
+      #name {
         font-weight: bold;
         color: rgb(153, 117, 214);
       }
@@ -108,14 +108,12 @@ Published site: https://andypiatek.github.io/dgmde28/a2b/ttt_v2.html
     </style>
   </head>
   <body>
-    <header>
-      <div class="header">
-        <h1>Tic Tac Toe Game</h1>
-      </div>
+    <header class="header">
+      <h1>Tic Tac Toe Game</h1>
     </header>
     <main>
-      <div class="turn">
-        <h2><span class="name">X</span>'s Turn</h2>
+      <div id="turn">
+        <h2><span id="name">X</span>'s Turn</h2>
       </div>
       <div id="box-container">
         <script>
@@ -138,14 +136,12 @@ Published site: https://andypiatek.github.io/dgmde28/a2b/ttt_v2.html
           document.getElementById("sq8").innerHTML = "0";
         </script>
       </div>
-      <button class="start">Start Game</button>
+      <button id="start">Start Game</button>
     </main>
-    <footer>
-      <div class="footer">
-        <a href="https://en.wikipedia.org/wiki/Tic-tac-toe" target="_blank"
-          >Game Instructions</a
-        >
-      </div>
+    <footer class="footer">
+      <a href="https://en.wikipedia.org/wiki/Tic-tac-toe" target="_blank"
+        >Game Instructions</a
+      >
     </footer>
   </body>
 </html>
