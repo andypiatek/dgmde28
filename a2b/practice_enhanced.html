@@ -16,12 +16,6 @@ Published site: https://andypiatek.github.io/dgmde28/a2b/practice_enhanced.html
 
       function showTimesTable() {
         let n = prompt("Enter a number:");
-        // timesTable(n);
-
-        // for (i = 1; i <= 12; i++) {
-        //   console.log(n + " x " + i + " = " + n * i);
-        //   document.write("<p>" + n + " x " + i + " = " + n * i + "</p>");
-        // }
         const output = document.getElementById("output"); //get output div
         output.innerHTML = ""; //clear previous output
         for (i = 1; i <= 12; i++) {
@@ -37,10 +31,10 @@ Published site: https://andypiatek.github.io/dgmde28/a2b/practice_enhanced.html
 
       function convertToCelsius() {
         let ftemp = prompt("Enter a temperature in Fahrenheit:");
-        let ctemp = fahr2cels(ftemp);
-        document.write(
-          "<p>" + ftemp + " degrees F = " + ctemp.toFixed(2) + " degrees C</p>",
-        );
+        const output = document.getElementById("output"); //get output div
+        output.innerHTML = ""; //clear previous output
+        let ctemp = (ftemp - 32) * (5 / 9);
+        output.innerHTML = `<p>${ftemp} degrees F = ${ctemp} degrees C</p>`; //append new output
       }
     </script>
     <style>
@@ -102,6 +96,7 @@ Published site: https://andypiatek.github.io/dgmde28/a2b/practice_enhanced.html
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
         width: 680px;
         margin: 20px auto;
+        font-size: 1.2rem;
       }
       .subtitle {
         text-align: center;
