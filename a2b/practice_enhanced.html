@@ -13,6 +13,12 @@ Published site: https://andypiatek.github.io/dgmde28/a2b/practice_enhanced.html
     <script>
       // Problem 1: Times Table
       // Display times table for the user provided number multipled by 1 through 12
+
+      showTimesTable = function () {
+        let n = prompt("Enter a number:");
+        timesTable(n);
+      };
+
       function timesTable(n) {
         for (i = 1; i <= 12; i++) {
           console.log(n + " x " + i + " = " + n * i);
@@ -25,46 +31,88 @@ Published site: https://andypiatek.github.io/dgmde28/a2b/practice_enhanced.html
       function fahr2cels(ftemp) {
         return (ftemp - 32) * (5 / 9);
       }
+
+      function convertToCelsius() {
+        let ftemp = prompt("Enter a temperature in Fahrenheit:");
+        let ctemp = fahr2cels(ftemp);
+        document.write(
+          "<p>" + ftemp + " degrees F = " + ctemp.toFixed(2) + " degrees C</p>",
+        );
+      }
     </script>
     <style>
       body {
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
         font-size: 1.1rem;
+        background-color: rgb(53, 119, 226);
       }
-      .container {
+      h1 {
         text-align: center;
         margin-top: 50px;
+        color: beige;
+      }
+      .container {
+        margin-top: 50px;
+        display: flex;
+        justify-content: center;
+      }
+      .section {
+        margin: 20px;
+        padding: 20px;
+        text-align: center;
+        background-color: rgb(240, 240, 240);
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+        width: 300px;
+      }
+      button {
+        padding: 10px 20px;
+        font-size: 1rem;
+        color: white;
+        background-color: rgb(53, 119, 226);
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: black;
+      }
+      .footer {
+        text-align: center;
+        margin: 40px auto;
+        color: beige;
+        font-size: 1.5rem;
+      }
+      .footer a {
+        color: beige;
+        text-decoration: none;
+        font-weight: bold;
+      }
+      .footer a:hover {
+        color: black;
       }
     </style>
   </head>
   <body>
-    <div class="container">
+    <header>
       <h1>Assignment 2b: Tic Tac Toe part 2 plus JS Practice</h1>
-      <!-- Problem 1: Times Table -->
-      <h2>Problem 1: Times Table</h2>
-      <script>
-        let n = prompt("Enter a number:");
-        timesTable(n);
-      </script>
-      <!-- Problem 2: Fahrenheit to Celsius -->
-      <h2>Problem 2: Fahrenheit to Celsius</h2>
-      <script>
-        document.write(
-          "<p>" + "20" + " degrees F = " + fahr2cels(20) + " degrees C</p>",
-        );
-        document.write(
-          "<p>" + "40" + " degrees F = " + fahr2cels(40) + " degrees C</p>",
-        );
-        document.write(
-          "<p>" + "55" + " degrees F = " + fahr2cels(55) + " degrees C</p>",
-        );
-        document.write(
-          "<p>" + "63" + " degrees F = " + fahr2cels(63) + " degrees C</p>",
-        );
-        document.write(
-          "<p>" + "95" + " degrees F = " + fahr2cels(95) + " degrees C</p>",
-        );
-      </script>
-    </div>
+    </header>
+    <main>
+      <div class="container">
+        <!-- Problem 1: Times Table -->
+        <div class="section">
+          <h2>Problem 1: <br />Times Table</h2>
+          <button onclick="showTimesTable()">Show Times Table</button>
+        </div>
+        <!-- Problem 2: Fahrenheit to Celsius -->
+        <div class="section">
+          <h2>Problem 2: <br />Fahrenheit to Celsius</h2>
+          <button onclick="convertToCelsius()">
+            Convert Fahrenheit to Celsius
+          </button>
+        </div>
+      </div>
+    </main>
+    <footer class="footer">Back to <a href="index.html">Home Page</a></footer>
   </body>
 </html>
