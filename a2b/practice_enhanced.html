@@ -21,20 +21,18 @@ Published site: https://andypiatek.github.io/dgmde28/a2b/practice_enhanced.html
         for (i = 1; i <= 12; i++) {
           output.innerHTML += `<p>${n} x ${i} = ${n * i}</p>`; //append new output
         }
+        console.log(output.innerHTML);
       }
 
       // Problem 2: Fahrenheit to Celsius
       // Take given temperature in Fahrenheit and convert it to Celsius
-      function fahr2cels(ftemp) {
-        return (ftemp - 32) * (5 / 9);
-      }
-
       function convertToCelsius() {
         let ftemp = prompt("Enter a temperature in Fahrenheit:");
         const output = document.getElementById("output"); //get output div
         output.innerHTML = ""; //clear previous output
-        let ctemp = (ftemp - 32) * (5 / 9);
-        output.innerHTML = `<p>${ftemp} degrees F = ${ctemp} degrees C</p>`; //append new output
+        let ctemp = (ftemp - 32) * (5 / 9); //convert to Celsius formula
+        output.innerHTML = `<p>${ftemp} degrees F = ${ctemp.toFixed(2)} degrees C</p>`; //append new output, rounding to 2 decimal places
+        console.log(output.innerHTML);
       }
     </script>
     <style>
@@ -96,7 +94,9 @@ Published site: https://andypiatek.github.io/dgmde28/a2b/practice_enhanced.html
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
         width: 680px;
         margin: 20px auto;
-        font-size: 1.2rem;
+        font-size: 1.4rem;
+        font-weight: 700;
+        line-height: 0.8rem;
       }
       .subtitle {
         text-align: center;
