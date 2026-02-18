@@ -22,8 +22,11 @@ Published site: https://andypiatek.github.io/dgmde28/a2b/practice_enhanced.html
         //   console.log(n + " x " + i + " = " + n * i);
         //   document.write("<p>" + n + " x " + i + " = " + n * i + "</p>");
         // }
-        const output = document.getElementById("output");
-        output.innerHTML = "Results will go here";
+        const output = document.getElementById("output"); //get output div
+        output.innerHTML = ""; //clear previous output
+        for (i = 1; i <= 12; i++) {
+          output.innerHTML += `<p>${n} x ${i} = ${n * i}</p>`; //append new output
+        }
       }
 
       // Problem 2: Fahrenheit to Celsius
@@ -100,11 +103,18 @@ Published site: https://andypiatek.github.io/dgmde28/a2b/practice_enhanced.html
         width: 680px;
         margin: 20px auto;
       }
+      .subtitle {
+        text-align: center;
+        font-size: 1.5rem;
+        color: beige;
+        text-transform: uppercase;
+      }
     </style>
   </head>
   <body>
     <header>
       <h1>Assignment 2b: Tic Tac Toe part 2 plus JS Practice</h1>
+      <p class="subtitle">Enhanced Version</p>
     </header>
     <main>
       <div class="container">
@@ -121,7 +131,7 @@ Published site: https://andypiatek.github.io/dgmde28/a2b/practice_enhanced.html
           </button>
         </div>
       </div>
-      <div id="output">ddd</div>
+      <div id="output">Output Pane</div>
     </main>
     <footer class="footer">Back to <a href="index.html">Home Page</a></footer>
   </body>
