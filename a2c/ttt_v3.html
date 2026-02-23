@@ -1,6 +1,6 @@
 <!-- 
  
-Published site: https://andypiatek.github.io/dgmde28/a2c/ttt_v2.html
+Published site: https://andypiatek.github.io/dgmde28/a2c/ttt_v3.html
 
 -->
 
@@ -107,21 +107,25 @@ Published site: https://andypiatek.github.io/dgmde28/a2c/ttt_v2.html
       }
     </style>
     <script>
+      const NUM_SQUARES = 9;
       window.onload = function () {
-        // for (i = 0; i < 9; i++) {
-        //   id = "sq" + i;
-        //   document.getElementById(id).onclick = function () {
-        //     console.log("Square " + this.id + " was clicked.");
-        //   };
-        // }
-        for (i = 0; i < 9; i++) {
+        // attach button handlers to the squares
+        for (let i = 0; i < NUM_SQUARES; i++) {
           id = "sq" + i;
+          // using getElementById - experiment only
+          // document.getElementById(id).onclick = buttonHander;
+          //using querySelector is more flexible - CSS selector syntax
           document.querySelector("#" + id).onclick = buttonHander;
         }
       };
       function buttonHander() {
         console.log("Square " + this.id + " was clicked.");
         document.getElementById(this.id).innerHTML = "X";
+        // console.log(document.getElementById(this.id).innerHTML);
+        // index = this.id.substring(2); // get the number part of the id
+        index = parseInt(this.id.substring(2)); // get the number part of the id
+        console.log("Square index: " + index);
+        alert("Square " + index + " was clicked.");
       }
     </script>
   </head>
@@ -138,8 +142,8 @@ Published site: https://andypiatek.github.io/dgmde28/a2c/ttt_v2.html
           // draw the 9 squares of the board
           // square params are in the css
           // square ids will be sq1, sq2,...
-          const NUM_SQUARES = 9;
-          for (i = 0; i < NUM_SQUARES; i++) {
+          // const NUM_SQUARES = 9;
+          for (let i = 0; i < 9; i++) {
             id = "sq" + i;
             document.write("<div class='square' id='" + id + "'></div>");
           }
