@@ -123,6 +123,13 @@ Published site: https://andypiatek.github.io/dgmde28/a2c/ttt_v4.html
       };
       function buttonHander() {
         console.log("Square " + this.id + " was clicked.");
+
+        // check if the square is already occupied - this also prevents the turn from toggling
+        if (this.textContent !== "") return;
+
+        // Aleternative, disable the button but removing event handler - is this a good practice?
+        // this.onclick = null;
+
         document.getElementById(this.id).innerHTML = currentTurn;
         // console.log(document.getElementById(this.id).innerHTML);
         // index = this.id.substring(2); // get the number part of the id
@@ -130,7 +137,7 @@ Published site: https://andypiatek.github.io/dgmde28/a2c/ttt_v4.html
         console.log("Square index: " + index);
         // alert("Square " + index + " was clicked.");
         currentTurn = currentTurn === turns[0] ? turns[1] : turns[0]; // toggle turns
-        document.getElementById("turn").textContent = currentTurn;
+        document.getElementById("turn").textContent = currentTurn; //
       }
     </script>
   </head>
