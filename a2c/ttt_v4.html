@@ -109,7 +109,13 @@ Published site: https://andypiatek.github.io/dgmde28/a2c/ttt_v4.html
     <script>
       const NUM_SQUARES = 9;
       const turns = ["X", "O"];
-      let currentTurn = turns[0];
+      // let currentTurn = turns[0];
+
+      // const rand = Math.random();
+      // console.log("Random number: " + rand);
+      // let currentTurn = rand < 0.5 ? turns[0] : turns[1]; // randomly select starting turn
+      // console.log("Current turn: " + currentTurn);
+
       window.onload = function () {
         // attach button handlers to the squares
         for (let i = 0; i < NUM_SQUARES; i++) {
@@ -120,6 +126,11 @@ Published site: https://andypiatek.github.io/dgmde28/a2c/ttt_v4.html
           //using querySelector is more flexible - CSS selector syntax
           document.querySelector("#" + id).onclick = buttonHander;
         }
+        const rand = Math.random();
+        console.log("Random number: " + rand);
+        let currentTurn = rand < 0.5 ? turns[0] : turns[1]; // randomly select starting turn
+        console.log("Current turn: " + currentTurn);
+        document.getElementById("turn").innerHTML = currentTurn; // update DOM with the starting turn
       };
       function buttonHander() {
         console.log("Square " + this.id + " was clicked.");
@@ -147,7 +158,7 @@ Published site: https://andypiatek.github.io/dgmde28/a2c/ttt_v4.html
     </header>
     <main>
       <div id="turn-section">
-        <h2><span id="turn">X</span>'s Turn</h2>
+        <h2><span id="turn"></span>'s Turn</h2>
       </div>
       <div id="box-container">
         <script>
