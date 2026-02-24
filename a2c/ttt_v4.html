@@ -110,10 +110,12 @@ Published site: https://andypiatek.github.io/dgmde28/a2c/ttt_v4.html
       const NUM_SQUARES = 9;
       const turns = ["X", "O"];
 
-      const rand = Math.random();
-      console.log("Random number: " + rand);
-      let currentTurn = rand < 0.5 ? turns[0] : turns[1]; // randomly select starting turn
-      console.log("Current turn: " + currentTurn);
+      // const rand = Math.random();
+      // console.log("Random number: " + rand);
+      // let currentTurn = rand < 0.5 ? turns[0] : turns[1]; // randomly select starting turn
+      // console.log("Current turn: " + currentTurn);
+
+      let currentTurn = Math.random() < 0.5 ? turns[0] : turns[1]; // randomly select starting turn
 
       window.onload = function () {
         // attach button handlers to the squares
@@ -142,7 +144,7 @@ Published site: https://andypiatek.github.io/dgmde28/a2c/ttt_v4.html
         index = parseInt(this.id.substring(2)); // get the number part of the id
         console.log("Square index: " + index);
         currentTurn = currentTurn === turns[0] ? turns[1] : turns[0]; // toggle turns
-        document.getElementById("turn").textContent = currentTurn; //
+        document.getElementById("turn").textContent = currentTurn; // display turn based on the currentTurn variable
       }
     </script>
   </head>
