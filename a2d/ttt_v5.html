@@ -137,13 +137,6 @@ Published site: https://andypiatek.github.io/dgmde28/a2c/ttt_v5.html
         // set the square to the current turn (X or O)
         document.getElementById(this.id).innerHTML = currentTurn;
 
-        // console.log(document.getElementById(this.id).innerHTML);
-        // Different approach, for testing on only
-        //   index = parseInt(this.id.substring(2)); // get the number part of the id
-        // console.log("Square index: " + index);
-        // moves[index] = currentTurn; // store the move in the moves array
-        // console.log("Current moves: " + moves);
-
         // toggle turns
         currentTurn = currentTurn === turns[0] ? turns[1] : turns[0];
         document.getElementById("turn").textContent = currentTurn; // display turn based on the currentTurn variable
@@ -153,10 +146,13 @@ Published site: https://andypiatek.github.io/dgmde28/a2c/ttt_v5.html
         // console.log(typeof squares);
 
         // Convert the NodeList to an array using spread operator; NodeList does not have map()
-        moves = [...squares];
+        // moves = [...squares];
+
+        //or based on MDN docs
+        moves = Array.from(squares);
 
         //Fill out content of each square
-        moves = moves.map((square) => square.innerText);
+        moves = moves.map((square) => square.innerText || "-");
         console.log(moves);
       }
 
