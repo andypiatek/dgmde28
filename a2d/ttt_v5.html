@@ -109,6 +109,7 @@ Published site: https://andypiatek.github.io/dgmde28/a2c/ttt_v5.html
     <script>
       const NUM_SQUARES = 9;
       const turns = ["X", "O"];
+      let moves = Array(NUM_SQUARES).fill("-"); // initialize an array to store moves
 
       let currentTurn = Math.random() < 0.5 ? turns[0] : turns[1]; // randomly select starting turn
 
@@ -133,13 +134,19 @@ Published site: https://andypiatek.github.io/dgmde28/a2c/ttt_v5.html
         // check if the square is already occupied - this also prevents the turn from toggling
         if (this.textContent !== "") return;
 
-        // update the current turn
+        // set the square to the current turn (X or O)
         document.getElementById(this.id).innerHTML = currentTurn;
+
         // console.log(document.getElementById(this.id).innerHTML);
         index = parseInt(this.id.substring(2)); // get the number part of the id
         console.log("Square index: " + index);
-        currentTurn = currentTurn === turns[0] ? turns[1] : turns[0]; // toggle turns
+        moves[index] = currentTurn; // store the move in the moves array
+
+        // toggle turns
+        currentTurn = currentTurn === turns[0] ? turns[1] : turns[0];
         document.getElementById("turn").textContent = currentTurn; // display turn based on the currentTurn variable
+
+        console.log("Current moves: " + moves);
       }
 
       function clearBoard() {
