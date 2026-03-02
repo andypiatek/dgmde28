@@ -9,7 +9,7 @@ Published site: https://andypiatek.github.io/dgmde28/a2c/ttt_v5.html
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tic-Tac-Toe Game v4</title>
+    <title>Tic-Tac-Toe Game v5</title>
     <style>
       * {
         margin: 0;
@@ -138,15 +138,26 @@ Published site: https://andypiatek.github.io/dgmde28/a2c/ttt_v5.html
         document.getElementById(this.id).innerHTML = currentTurn;
 
         // console.log(document.getElementById(this.id).innerHTML);
-        index = parseInt(this.id.substring(2)); // get the number part of the id
-        console.log("Square index: " + index);
-        moves[index] = currentTurn; // store the move in the moves array
+        // Different approach, for testing on only
+        //   index = parseInt(this.id.substring(2)); // get the number part of the id
+        // console.log("Square index: " + index);
+        // moves[index] = currentTurn; // store the move in the moves array
+        // console.log("Current moves: " + moves);
 
         // toggle turns
         currentTurn = currentTurn === turns[0] ? turns[1] : turns[0];
         document.getElementById("turn").textContent = currentTurn; // display turn based on the currentTurn variable
 
-        console.log("Current moves: " + moves);
+        // Find all squares - it's a NodeList, not an array!!!
+        squares = document.querySelectorAll(".square");
+        // console.log(typeof squares);
+
+        // Convert the NodeList to an array using spread operator; NodeList does not have map()
+        moves = [...squares];
+
+        //Fill out content of each square
+        moves = moves.map((square) => square.innerText);
+        console.log(moves);
       }
 
       function clearBoard() {
