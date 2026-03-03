@@ -141,6 +141,8 @@ Published site: https://andypiatek.github.io/dgmde28/a2c/ttt_v5.html
         currentTurn = currentTurn === turns[0] ? turns[1] : turns[0];
         document.getElementById("turn").textContent = currentTurn; // display turn based on the currentTurn variable
 
+        // ********************************************************************************
+
         // Find all squares - it's a NodeList, not an array!!!
         squares = document.querySelectorAll(".square");
         // console.log(typeof squares);
@@ -154,6 +156,32 @@ Published site: https://andypiatek.github.io/dgmde28/a2c/ttt_v5.html
         //Fill out content of each square
         moves = moves.map((square) => square.innerText || "-");
         console.log(moves);
+
+        // ********************************************************************************
+        //TODO:Create an array called winConditions of 8 strings (based on the array) to represent the 8 possible win conditions  (3 across, 3 down, 2 diagonal),  Only put X’s and O’s in the strings.
+        let winPatterns = [
+          [0, 1, 2],
+          [3, 4, 5],
+          [6, 7, 8],
+          [0, 3, 6],
+          [1, 4, 7],
+          [2, 5, 8],
+          [0, 4, 8],
+          [2, 4, 6],
+        ];
+
+        let winConditions = [];
+        for (let i = 0; i < winPatterns.length; i++) {
+          let pattern = winPatterns[i];
+          let line1 = moves[pattern[0]];
+          let line2 = moves[pattern[1]];
+          let line3 = moves[pattern[2]];
+          let line = line1 + line2 + line3;
+          winConditions[i] = line;
+          // console.log(line);
+          // console.log(i + " " + winConditions[i]);
+        }
+        console.log(winConditions);
       }
 
       function clearBoard() {
