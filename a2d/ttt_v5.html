@@ -181,7 +181,13 @@ Published site: https://andypiatek.github.io/dgmde28/a2c/ttt_v5.html
           // console.log(line);
           // console.log(i + " " + winConditions[i]);
         }
-        console.log(winConditions);
+        console.log("Win Conditions: " + winConditions);
+
+        if (winConditions.includes("XXX")) {
+          console.log("X wins!");
+        } else if (winConditions.includes("OOO")) {
+          console.log("O wins!");
+        }
       }
 
       function clearBoard() {
