@@ -113,6 +113,9 @@ Published site: https://andypiatek.github.io/dgmde28/a2c/ttt_v5.html
 
       let currentTurn = Math.random() < 0.5 ? turns[0] : turns[1]; // randomly select starting turn
 
+      // only play if gameOver is false, otherwise ignore the clicks
+      let gameOver = false;
+
       window.onload = function () {
         // attach button handlers to the squares
         for (let i = 0; i < NUM_SQUARES; i++) {
@@ -129,6 +132,7 @@ Published site: https://andypiatek.github.io/dgmde28/a2c/ttt_v5.html
         document.querySelector("#start").onclick = clearBoard;
       };
       function buttonHander() {
+        if (gameOver) return;
         console.log("Square " + this.id + " was clicked.");
 
         // check if the square is already occupied - this also prevents the turn from toggling
@@ -170,27 +174,43 @@ Published site: https://andypiatek.github.io/dgmde28/a2c/ttt_v5.html
           [2, 4, 6],
         ];
 
+        // create winConditions array to store the possible win conditions based on the winPatterns and moves arrays
         let winConditions = [];
         for (let i = 0; i < winPatterns.length; i++) {
-          let pattern = winPatterns[i];
-          let line1 = moves[pattern[0]];
-          let line2 = moves[pattern[1]];
-          let line3 = moves[pattern[2]];
-          let line = line1 + line2 + line3;
-          winConditions[i] = line;
+          let pattern = winPatterns[i]; // get the current win pattern
+          let line1 = moves[pattern[0]]; // get the move at the first index of the pattern
+          let line2 = moves[pattern[1]]; // get the move at the second index of the pattern
+          let line3 = moves[pattern[2]]; // get the move at the third index of the pattern
+          let line = line1 + line2 + line3; // concatenate the moves to form a string representing the line
+          winConditions[i] = line; // store the line in the winConditions array
           // console.log(line);
           // console.log(i + " " + winConditions[i]);
         }
         console.log("Win Conditions: " + winConditions);
 
+        // let gameOver = false;
+
         if (winConditions.includes("XXX")) {
           console.log("X wins!");
+          alert("X wins!");
+          gameOver = true;
+          return;
         } else if (winConditions.includes("OOO")) {
           console.log("O wins!");
+          alert("O wins!");
+          gameOver = true;
+          return;
+        } else if (!moves.includes("-")) {
+          console.log("It's a tie!");
+          alert("It's a tie!");
+          gameOver = true;
+          return;
         }
       }
 
       function clearBoard() {
+        // Reset game state
+        gameOver = false;
         // Clear the board
         for (let i = 0; i < NUM_SQUARES; i++) {
           document.getElementById("sq" + i).textContent = "";
