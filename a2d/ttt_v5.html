@@ -148,8 +148,6 @@ Published site: https://andypiatek.github.io/dgmde28/a2c/ttt_v5.html
         currentTurn = currentTurn === turns[0] ? turns[1] : turns[0];
         document.getElementById("turn").textContent = currentTurn; // display turn based on the currentTurn variable
 
-        // ********************************************************************************
-
         // Find all squares - it's a NodeList, not an array!!!
         squares = document.querySelectorAll(".square");
         // console.log(typeof squares);
@@ -164,8 +162,7 @@ Published site: https://andypiatek.github.io/dgmde28/a2c/ttt_v5.html
         moves = moves.map((square) => square.innerText || "-");
         console.log(moves);
 
-        // ********************************************************************************
-        //TODO:Create an array called winConditions of 8 strings (based on the array) to represent the 8 possible win conditions  (3 across, 3 down, 2 diagonal),  Only put X’s and O’s in the strings.
+        //  winPatterns array stores index patterns for winning combinations
         let winPatterns = [
           [0, 1, 2],
           [3, 4, 5],
@@ -197,14 +194,15 @@ Published site: https://andypiatek.github.io/dgmde28/a2c/ttt_v5.html
           console.log("X wins!");
           // alert("X wins!");
           // setTimeout(() => alert("X wins!"), 0); //delay the alert to show the winning move first
-          statusWindow.textContent = "X wins!";
+          // statusWindow.textContent = "X wins!";
+          statusWindow.innerHTML = `<span id="turn">X</span> wins!`;
           gameOver = true;
           return;
         } else if (winConditions.includes("OOO")) {
           console.log("O wins!");
           // alert("O wins!");
           // setTimeout(() => alert("O wins!"), 0); //delay the alert to show the winning move first
-          statusWindow.textContent = "O wins!";
+          statusWindow.innerHTML = `<span id="turn">O</span> wins!`;
           gameOver = true;
           return;
         } else if (!moves.includes("-")) {
@@ -212,7 +210,7 @@ Published site: https://andypiatek.github.io/dgmde28/a2c/ttt_v5.html
           console.log("It's a tie!");
           // alert("It's a tie!");
           // setTimeout(() => alert("Stalemate!"), 0); //delay the alert to show the winning move first
-          statusWindow.textContent = "Stalemate!";
+          statusWindow.innerHTML = `<span id="turn">Stalemate</span> !`;
           gameOver = true;
           return;
         }
