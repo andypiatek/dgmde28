@@ -192,17 +192,20 @@ Published site: https://andypiatek.github.io/dgmde28/a2c/ttt_v5.html
 
         if (winConditions.includes("XXX")) {
           console.log("X wins!");
-          alert("X wins!");
+          // alert("X wins!");
+          setTimeout(() => alert("X wins!"), 0);
           gameOver = true;
           return;
         } else if (winConditions.includes("OOO")) {
           console.log("O wins!");
-          alert("O wins!");
+          // alert("O wins!");
+          setTimeout(() => alert("O wins!"), 0);
           gameOver = true;
           return;
         } else if (!moves.includes("-")) {
           console.log("It's a tie!");
-          alert("It's a tie!");
+          // alert("It's a tie!");
+          setTimeout(() => alert("It's a tie!"), 0);
           gameOver = true;
           return;
         }
