@@ -130,6 +130,9 @@ Published site: https://andypiatek.github.io/dgmde28/a2c/ttt_v5.html
 
         // attach handler to the start button
         document.querySelector("#start").onclick = clearBoard;
+
+        // status window
+        statusWindow = document.getElementById("status");
       };
       function buttonHander() {
         if (gameOver) return;
@@ -193,19 +196,23 @@ Published site: https://andypiatek.github.io/dgmde28/a2c/ttt_v5.html
         if (winConditions.includes("XXX")) {
           console.log("X wins!");
           // alert("X wins!");
-          setTimeout(() => alert("X wins!"), 0);
+          // setTimeout(() => alert("X wins!"), 0); //delay the alert to show the winning move first
+          statusWindow.textContent = "X wins!";
           gameOver = true;
           return;
         } else if (winConditions.includes("OOO")) {
           console.log("O wins!");
           // alert("O wins!");
-          setTimeout(() => alert("O wins!"), 0);
+          // setTimeout(() => alert("O wins!"), 0); //delay the alert to show the winning move first
+          statusWindow.textContent = "O wins!";
           gameOver = true;
           return;
         } else if (!moves.includes("-")) {
+          // no more moves left, end the game in a tie
           console.log("It's a tie!");
           // alert("It's a tie!");
-          setTimeout(() => alert("It's a tie!"), 0);
+          // setTimeout(() => alert("Stalemate!"), 0); //delay the alert to show the winning move first
+          statusWindow.textContent = "Stalemate!";
           gameOver = true;
           return;
         }
@@ -218,6 +225,13 @@ Published site: https://andypiatek.github.io/dgmde28/a2c/ttt_v5.html
         for (let i = 0; i < NUM_SQUARES; i++) {
           document.getElementById("sq" + i).textContent = "";
         }
+        // toggle turns
+        //random
+        currentTurn = Math.random() < 0.5 ? turns[0] : turns[1]; // randomly select starting turn
+        // or alternate
+        // currentTurn = currentTurn === turns[0] ? turns[1] : turns[0];
+        statusWindow.innerHTML = `<span id="turn">${currentTurn}</span>'s Turn`; // update status window with the current turn
+        // document.getElementById("turn").textContent = currentTurn; // display turn based on the currentTurn variable
       }
     </script>
   </head>
@@ -227,7 +241,7 @@ Published site: https://andypiatek.github.io/dgmde28/a2c/ttt_v5.html
     </header>
     <main>
       <div id="turn-section">
-        <h2><span id="turn"></span>'s Turn</h2>
+        <h2 id="status"><span id="turn"></span>'s Turn</h2>
       </div>
       <div id="box-container">
         <script>
