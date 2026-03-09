@@ -1,0 +1,81 @@
+<!-- 
+ 
+- arrow funcitons
+- attchiing event listeners in 3 ways
+- 
+
+
+
+
+
+
+
+
+
+
+
+whatch class 5
+watch class 6
+watch secion march 2
+watch secion march 5
+watch review of the quiz
+
+Arrays - object in JS
+a.join('<br>')
+
+
+forEach
+map()
+
+
+
+-->
+
+<script>
+  //    calc = (a, b) => a + 5;
+  //    console.log(calc(2, 3));
+
+  // ****
+  //   a = new Array(1, 2, 3);
+  //   a[3] = 4;
+  //   a[10] = 5;
+  //   console.log(a.join("-")); //1-2-3-4-------5
+</script>
+
+<script>
+  // ******************** Event Listeners ********************
+  function doSomething1() {
+    const result = document.querySelector("#result");
+    const result1 = document.getElementById("result");
+    result.innerHTML = "Hello";
+    result.textContent = "Text Content";
+    console.log(`Result from querySelector ${result}`);
+    console.log(`Result from getElementById ${result}`);
+
+    console.log(document.querySelector("#results"));
+    // console.log("Button pressed!");
+    // console.log(this.value);
+  }
+</script>
+
+<input type="button" value="Press me" onclick="doSomething1()" />
+<div id="result"></div>
+
+<script>
+  // ******************** counting vowels ********************
+
+  // let count = 0;
+  // const str = "The quick brown fox";
+  // console.log(str);
+  // strArray = str.split("");
+  // console.log(strArray); //['T', 'h', 'e', ' ', 'q', 'u', 'i', 'c', 'k', ' ', 'b', 'r', 'o', 'w', 'n', ' ', 'f', 'o', 'x']
+  // const vowels = ["a", "e", "i", "o", "u"]; // or vowels = "aeiou".split("")
+  // console.log("vowels: " + vowels);
+  // for (i = 0; i < strArray.length; i++) {
+  //   if (vowels.includes(strArray[i])) {
+  //     console.log(`Vowel [${strArray[i]}] is ${strArray.indexOf(strArray[i])}`); //the indexOf will only return the first match; will not work for the second one
+  //     count++;
+  //   }
+  // }
+  // console.log(`Count is ${count}`);
+</script>

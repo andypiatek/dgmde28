@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // ***************** Part 1 ********************
+      document.write("<h1>Part 1:  Using an associative array </h1>");
+      menu = new Array();
+      menu["hotdogs"] = 4;
+      menu["fries"] = 3.5;
+      menu["soda"] = 1.5;
+      menu["sauerkraut"] = 1;
+
+      items = Object.keys(menu);
+      document.write("<h2>Joe's Hotdogs Menu</h2>");
+      // show all items with prices
+      for (item in menu) {
+        document.write("<li>" + item + " $" + menu[item] + "</li>");
+      }
+    </script>
+  </head>
+  <body></body>
+</html>
