@@ -36,8 +36,24 @@
         document.write("<li>" + item + " $" + menu2[item] + "</li>");
       }
       //
-      // ***************** Part 2 ********************
+      // ***************** Part 3 ********************
       //
+      function MenuItem(item, price) {
+        this.item = item;
+        this.price = price;
+      }
+      menu3 = [
+        new MenuItem("hotdogs", 4),
+        new MenuItem("fries", 3.5),
+        new MenuItem("soda", 1.5),
+        new MenuItem("sauerkraut", 1),
+      ];
+      document.write("<h2>Joe's Hotdogs Menu</h2>");
+      for (item in menu3) {
+        document.write(
+          "<li>" + menu3[item].item + " $" + menu3[item].price + "</li>",
+        );
+      }
     </script>
   </head>
   <body></body>
