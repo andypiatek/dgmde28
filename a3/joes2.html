@@ -5,34 +5,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script>
+      let order = {
+        hotdogs: 0,
+        fries: 0,
+        soda: 0,
+        sauerkraut: 0,
+      };
+
+      window.onload = function () {
+        document.getElementById("addToCart").onclick = function () {
+          // console.log("Add to Cart button clicked");
+          let select = document.querySelector("select");
+          // let selectedOption = select.value;
+          let selectedItem = select.selectedOptions[0].text;
+          // console.log("Selected option:", selectedOption);
+          console.log("Selected item:", selectedItem);
+          // Update the order object based on the selected item
+          if (selectedItem === "hotdogs") {
+            order.hotdogs++;
+          } else if (selectedItem === "fries") {
+            order.fries++;
+          } else if (selectedItem === "soda") {
+            order.soda++;
+          } else if (selectedItem === "sauerkraut") {
+            order.sauerkraut++;
+          }
+          console.log(order);
+        };
+      };
+
       document.write("<h1>Part 3:  Using a class  </h1>");
       function MenuItem(item, price) {
         this.item = item;
         this.price = price;
       }
-      menu3 = [
+      const menu3 = [
         new MenuItem("hotdogs", 4),
         new MenuItem("fries", 3.5),
         new MenuItem("soda", 1.5),
         new MenuItem("sauerkraut", 1),
       ];
+
       document.write("<h2>Joe's Hotdogs Menu</h2>");
       for (item in menu3) {
         document.write(
           "<li>" + menu3[item].item + " $" + menu3[item].price + "</li>",
         );
       }
+      document.write("<br><select id='select'>");
 
-      document.write("<br><select>");
-      // for (item in menu3) {
-      //   document.write(
-      //     "<option value='" +
-      //       menu3[item].price +
-      //       "'>" +
-      //       menu3[item].item +
-      //       "</option>",
-      //   );
-      // }
       menu3.forEach((menuItem) => {
         document.write(
           "<option value='" +
@@ -43,6 +64,8 @@
         );
       });
       document.write("</select>");
+
+      // console.log(order);
 
       // document.write("<br><button class='button'>Add to Cart</button>");
     </script>
@@ -55,8 +78,8 @@
       <option value="1.5">soda</option>
       <option value="1">sauerkraut</option>
     </select> -->
-    <button class="button">Add to Cart</button>
-    <div class="cart"></div>
+    <button class="button" id="addToCart">Add to Cart</button>
+    <div class="cart">Future Content</div>
     <button class="button">Checkout</button>
   </body>
 </html>
