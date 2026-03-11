@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script>
+      //
       // ***************** Part 1 ********************
+      //
       document.write("<h1>Part 1:  Using an associative array </h1>");
       menu = new Array();
       menu["hotdogs"] = 4;
@@ -19,6 +21,23 @@
       for (item in menu) {
         document.write("<li>" + item + " $" + menu[item] + "</li>");
       }
+      //
+      // ***************** Part 2 ********************
+      //
+      document.write("<h1>Part 2:  Using an object  </h1>");
+      menu2 = {
+        hotdogs: 4,
+        fries: 3.5,
+        soda: 1.5,
+        sauerkraut: 1,
+      };
+      document.write("<h2>Joe's Hotdogs Menu</h2>");
+      for (item in menu2) {
+        document.write("<li>" + item + " $" + menu2[item] + "</li>");
+      }
+      //
+      // ***************** Part 2 ********************
+      //
     </script>
   </head>
   <body></body>
