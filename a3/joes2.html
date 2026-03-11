@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      document.write("<h1>Part 3:  Using a class  </h1>");
+      function MenuItem(item, price) {
+        this.item = item;
+        this.price = price;
+      }
+      menu3 = [
+        new MenuItem("hotdogs", 4),
+        new MenuItem("fries", 3.5),
+        new MenuItem("soda", 1.5),
+        new MenuItem("sauerkraut", 1),
+      ];
+      document.write("<h2>Joe's Hotdogs Menu</h2>");
+      for (item in menu3) {
+        document.write(
+          "<li>" + menu3[item].item + " $" + menu3[item].price + "</li>",
+        );
+      }
+
+      document.write("<br><select>");
+      // for (item in menu3) {
+      //   document.write(
+      //     "<option value='" +
+      //       menu3[item].price +
+      //       "'>" +
+      //       menu3[item].item +
+      //       "</option>",
+      //   );
+      // }
+      menu3.forEach((menuItem) => {
+        document.write(
+          "<option value='" +
+            menuItem.price +
+            "'>" +
+            menuItem.item +
+            "</option>",
+        );
+      });
+
+      document.write("</select>");
+    </script>
+  </head>
+  <body>
+    <br />
+    <!-- <select>
+      <option value="4">hotdogs</option>
+      <option value="3.5">fries</option>
+      <option value="1.5">soda</option>
+      <option value="1">sauerkraut</option>
+    </select> -->
+  </body>
+</html>
