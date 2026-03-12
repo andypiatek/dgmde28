@@ -16,6 +16,7 @@
 
       window.onload = function () {
         cart = document.querySelector(".cart");
+        let output = "";
 
         document.getElementById("addToCart").onclick = function () {
           // console.log("Add to Cart button clicked");
@@ -40,26 +41,48 @@
           // cart.innerHTML = JSON.stringify(order);
 
           // clear the cart before updating
-          let output = "";
+          output = "";
 
           // Loop through the order and display  items with quantity > 0
-          for (let item in order) {
+          for (item in order) {
             if (order[item] > 0) {
               output += item + ": " + order[item] + "<br>";
             }
           }
-          console.log(output);
+          // console.log(output);
 
           // Update the cart section
           cart.innerHTML = output;
         };
 
-        // for (let item in order) {
-        //   if (order[item] > 0) {
-        //     cart.innerHTML = item + ": " + order[item] + "<br>";
-        //     document.write("<li>" + order[item] + "</li>");
-        //   }
-        // }
+        // Checkout button
+        document.getElementById("checkout").onclick = function () {
+          console.log("Checkout button clicked");
+          let total = 0;
+          // console.log(order["hotdogs"]);
+
+          // Loop through the menu and calculate the total
+          menu3.forEach((menuItem) => {
+            if (order[menuItem.item] > 0) {
+              total += order[menuItem.item] * menuItem.price;
+            }
+          });
+
+          // Generate the bill and display it in alert
+          let bill = "";
+          for (item in order) {
+            if (order[item] > 0) {
+              bill += item + ": " + order[item] + "\n";
+              // console.log(`Ordered items: ${bill}`);
+            }
+          }
+          alert(
+            "*** Joe's Hodtogs Bill ***\n\n" +
+              bill +
+              "-------------\nTotal: $" +
+              total.toFixed(2),
+          );
+        };
       };
 
       document.write("<h1>Part 5:  Using a class  </h1>");
@@ -109,7 +132,7 @@
       <option value="1">sauerkraut</option>
     </select> -->
     <button class="button" id="addToCart">Add to Cart</button>
-    <div class="cart">Future Content</div>
-    <button class="button">Checkout</button>
+    <div class="cart">Cart is Empty</div>
+    <button class="button" id="checkout">Checkout</button>
   </body>
 </html>
