@@ -95,3 +95,43 @@ map()
   //
   parse();
 </script>
+
+<script>
+  let menu = document.getElementById("menu");
+
+  function MenuItem(item, price) {
+    this.item = item;
+    this.price = price;
+  }
+  const menu3 = [
+    new MenuItem("hotdogs", 4),
+    new MenuItem("fries", 3.5),
+    new MenuItem("soda", 1.5),
+    new MenuItem("sauerkraut", 1),
+  ];
+
+  let menuContent = "<ul>";
+  for (item in menu3) {
+    menuContent +=
+      "<li>" + menu3[item].item + " $" + menu3[item].price + "</li>";
+  }
+
+  // use map() instead of for...in loop
+  menu.innerHTML = `
+  <ul>
+    ${menu3.map((item) => `<li>${item.item} $${item.price}</li>`).join("")}
+  </ul>
+`;
+
+  menuContent += "</ul>";
+  menu.innerHTML = menuContent;
+</script>
+<body>
+  <div class="menu" id="menu"></div>
+</body>
+
+//////////////// from: Update the order object based on the selected item if
+(selectedItem === "hotdogs") { order.hotdogs++; } else if (selectedItem ===
+"fries") { order.fries++; } else if (selectedItem === "soda") { order.soda++; }
+else if (selectedItem === "sauerkraut") { order.sauerkraut++; } to:
+order[selectedItem] = order[selectedItem] + 1; to order[selectedItem]++;

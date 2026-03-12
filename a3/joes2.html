@@ -4,6 +4,81 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+      }
+      body {
+        font-family:
+          "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+        background-color: rgb(175, 226, 108);
+      }
+      header {
+        text-align: center;
+        margin-top: 20px;
+      }
+      h2 {
+        font-size: 2rem;
+        text-align: center;
+        margin-bottom: 10px;
+      }
+      main {
+        max-width: 300px;
+        margin: 20px auto;
+        background: white;
+        padding: 30px;
+        border-radius: 12px;
+      }
+      .menu ul {
+        list-style: none;
+        text-align: center;
+        font-size: 1.2rem;
+        padding: 0;
+      }
+      .menu li {
+        padding: 5px;
+      }
+      .button {
+        width: 100%;
+        padding: 10px;
+        margin-top: 20px;
+        border-radius: 6px;
+        background: green;
+        color: white;
+        font-size: 1rem;
+        border: none;
+        cursor: pointer;
+      }
+      .selector {
+        width: 100%;
+        padding: 8px;
+        font-size: 1rem;
+        border-radius: 6px;
+        margin-top: 10px;
+        text-align: center;
+      }
+      .cart {
+        margin-top: 20px;
+        padding: 8px;
+        border: 1px solid green;
+        border-radius: 6px;
+        font-size: 1.2rem;
+        text-align: center;
+      }
+      .image {
+        width: 100%;
+        border-radius: 10px;
+        margin-bottom: 0px;
+      }
+      .caption {
+        font-size: 0.7rem;
+        text-align: center;
+        margin-bottom: 20px;
+        color: gray;
+      }
+    </style>
+
     <script>
       let order = {
         hotdogs: 0,
@@ -12,45 +87,50 @@
         sauerkraut: 0,
       };
 
+      function MenuItem(item, price) {
+        this.item = item;
+        this.price = price;
+      }
+      const menu3 = [
+        new MenuItem("hotdogs", 4),
+        new MenuItem("fries", 3.5),
+        new MenuItem("soda", 1.5),
+        new MenuItem("sauerkraut", 1),
+      ];
+
       // let output = "";
 
       window.onload = function () {
-        cart = document.querySelector(".cart");
+        let cart = document.querySelector(".cart");
         let output = "";
 
+        showMenu(menu3); //show the menu
+        populateSelect(menu3); //populate the select dropdown with menu items
+
+        // Add to Cart button
         document.getElementById("addToCart").onclick = function () {
           // console.log("Add to Cart button clicked");
           let select = document.getElementById("select");
-          // let selectedOption = select.value;
           // let selectedItem = select.selectedOptions[0].text;
-          let selectedItem = select.options[select.selectedIndex].text;
+          let selectedItem = select.options[select.selectedIndex].text; //Get the text from the selected option
           // console.log("Selected option:", selectedOption);
           console.log("Selected item:", selectedItem);
-          // Update the order object based on the selected item
-          if (selectedItem === "hotdogs") {
-            order.hotdogs++;
-          } else if (selectedItem === "fries") {
-            order.fries++;
-          } else if (selectedItem === "soda") {
-            order.soda++;
-          } else if (selectedItem === "sauerkraut") {
-            order.sauerkraut++;
-          }
-          console.log(order);
+
+          // Increase the count of the selected item
+          // order[selectedItem] = order[selectedItem] + 1;
+          order[selectedItem]++;
+
           console.log(`Active order: ${JSON.stringify(order)}`);
 
-          // cart.innerHTML = JSON.stringify(order);
-
-          // clear the cart before updating
+          // clear the cart before updating - IMPORTANT!
           output = "";
 
-          // Loop through the order and display  items with quantity > 0
+          // Loop through the order and display items with quantity > 0
           for (item in order) {
             if (order[item] > 0) {
               output += item + ": " + order[item] + "<br>";
             }
           }
-          // console.log(output);
 
           // Update the cart section
           cart.innerHTML = output;
@@ -94,54 +174,50 @@
         }; // end of checkout button
       }; //end of window.onload
 
-      document.write("<h1>Part 5:  Using a class  </h1>");
-      function MenuItem(item, price) {
-        this.item = item;
-        this.price = price;
-      }
-      const menu3 = [
-        new MenuItem("hotdogs", 4),
-        new MenuItem("fries", 3.5),
-        new MenuItem("soda", 1.5),
-        new MenuItem("sauerkraut", 1),
-      ];
+      //Show the menu
+      function showMenu(menu3) {
+        let menu = document.getElementById("menu");
 
-      document.write("<h2>Joe's Hotdogs Menu</h2>");
-      document.write("<ul>");
-      for (item in menu3) {
-        document.write(
-          "<li>" + menu3[item].item + " $" + menu3[item].price + "</li>",
-        );
+        //Build a list of menu items
+        let menuContent = "<ul>";
+        for (item in menu3) {
+          menuContent +=
+            "<li>" + menu3[item].item + " $" + menu3[item].price + "</li>";
+        }
+        menuContent += "</ul>";
+        menu.innerHTML = menuContent;
       }
-      document.write("</ul>");
-      document.write("<br><select id='select'>");
 
-      menu3.forEach((menuItem) => {
-        document.write(
-          "<option value='" +
+      function populateSelect(menuData) {
+        const select = document.getElementById("select");
+
+        let html = "";
+        // Another way to loop through the menu data and populate build html
+        menuData.forEach((menuItem) => {
+          html +=
+            "<option value='" +
             menuItem.price +
             "'>" +
             menuItem.item +
-            "</option>",
-        );
-      });
-      document.write("</select>");
+            "</option>";
+        });
 
-      // console.log(order);
-
-      // document.write("<br><button class='button'>Add to Cart</button>");
+        select.innerHTML = html;
+      }
     </script>
   </head>
   <body>
-    <br />
-    <!-- <select>
-      <option value="4">hotdogs</option>
-      <option value="3.5">fries</option>
-      <option value="1.5">soda</option>
-      <option value="1">sauerkraut</option>
-    </select> -->
-    <button class="button" id="addToCart">Add to Cart</button>
-    <div class="cart">Cart is Empty</div>
-    <button class="button" id="checkout">Checkout</button>
+    <header></header>
+    <main>
+      <img src="joes-hotdogs.jpg" alt="Joe's Hot Dogs" class="image" />
+      <div class="caption">Source: http://joeshotdogsjoliet.com/history/</div>
+      <h2>Menu</h2>
+      <div class="menu" id="menu"></div>
+      <select name="select" class="selector" id="select"></select>
+      <button class="button" id="addToCart">Add to Cart</button>
+      <div class="cart">Cart is Empty</div>
+      <button class="button" id="checkout">Checkout</button>
+    </main>
+    <footer></footer>
   </body>
 </html>
