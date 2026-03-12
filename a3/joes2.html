@@ -12,12 +12,17 @@
         sauerkraut: 0,
       };
 
+      // let output = "";
+
       window.onload = function () {
+        cart = document.querySelector(".cart");
+
         document.getElementById("addToCart").onclick = function () {
           // console.log("Add to Cart button clicked");
-          let select = document.querySelector("select");
+          let select = document.getElementById("select");
           // let selectedOption = select.value;
-          let selectedItem = select.selectedOptions[0].text;
+          // let selectedItem = select.selectedOptions[0].text;
+          let selectedItem = select.options[select.selectedIndex].text;
           // console.log("Selected option:", selectedOption);
           console.log("Selected item:", selectedItem);
           // Update the order object based on the selected item
@@ -31,10 +36,33 @@
             order.sauerkraut++;
           }
           console.log(order);
+
+          // cart.innerHTML = JSON.stringify(order);
+
+          // clear the cart before updating
+          let output = "";
+
+          // Loop through the order and display  items with quantity > 0
+          for (let item in order) {
+            if (order[item] > 0) {
+              output += item + ": " + order[item] + "<br>";
+            }
+          }
+          console.log(output);
+
+          // Update the cart section
+          cart.innerHTML = output;
         };
+
+        // for (let item in order) {
+        //   if (order[item] > 0) {
+        //     cart.innerHTML = item + ": " + order[item] + "<br>";
+        //     document.write("<li>" + order[item] + "</li>");
+        //   }
+        // }
       };
 
-      document.write("<h1>Part 3:  Using a class  </h1>");
+      document.write("<h1>Part 5:  Using a class  </h1>");
       function MenuItem(item, price) {
         this.item = item;
         this.price = price;
@@ -47,11 +75,13 @@
       ];
 
       document.write("<h2>Joe's Hotdogs Menu</h2>");
+      document.write("<ul>");
       for (item in menu3) {
         document.write(
           "<li>" + menu3[item].item + " $" + menu3[item].price + "</li>",
         );
       }
+      document.write("</ul>");
       document.write("<br><select id='select'>");
 
       menu3.forEach((menuItem) => {
