@@ -4,6 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <!-- <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family:
+          "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+        background-color: rgb(175, 226, 108);
+      }
+    </style> -->
     <script>
       let order = {
         hotdogs: 0,
@@ -12,11 +24,44 @@
         sauerkraut: 0,
       };
 
+      function MenuItem(item, price) {
+        this.item = item;
+        this.price = price;
+      }
+      const menu3 = [
+        new MenuItem("hotdogs", 4),
+        new MenuItem("fries", 3.5),
+        new MenuItem("soda", 1.5),
+        new MenuItem("sauerkraut", 1),
+      ];
+
       // let output = "";
 
       window.onload = function () {
-        cart = document.querySelector(".cart");
+        let cart = document.querySelector(".cart");
         let output = "";
+
+        showMenu(menu3);
+        populateSelect(menu3);
+        // let menu = document.getElementById("menu");
+        // function MenuItem(item, price) {
+        //   this.item = item;
+        //   this.price = price;
+        // }
+        // const menu3 = [
+        //   new MenuItem("hotdogs", 4),
+        //   new MenuItem("fries", 3.5),
+        //   new MenuItem("soda", 1.5),
+        //   new MenuItem("sauerkraut", 1),
+        // ];
+
+        // let menuContent = "<ul>";
+        // for (item in menu3) {
+        //   menuContent +=
+        //     "<li>" + menu3[item].item + " $" + menu3[item].price + "</li>";
+        // }
+        // menuContent += "</ul>";
+        // menu.innerHTML = menuContent;
 
         document.getElementById("addToCart").onclick = function () {
           // console.log("Add to Cart button clicked");
@@ -26,17 +71,10 @@
           let selectedItem = select.options[select.selectedIndex].text;
           // console.log("Selected option:", selectedOption);
           console.log("Selected item:", selectedItem);
-          // Update the order object based on the selected item
-          if (selectedItem === "hotdogs") {
-            order.hotdogs++;
-          } else if (selectedItem === "fries") {
-            order.fries++;
-          } else if (selectedItem === "soda") {
-            order.soda++;
-          } else if (selectedItem === "sauerkraut") {
-            order.sauerkraut++;
-          }
-          console.log(order);
+
+          order[selectedItem] = order[selectedItem] + 1;
+          // order[selectedItem]++;
+
           console.log(`Active order: ${JSON.stringify(order)}`);
 
           // cart.innerHTML = JSON.stringify(order);
@@ -94,54 +132,83 @@
         }; // end of checkout button
       }; //end of window.onload
 
-      document.write("<h1>Part 5:  Using a class  </h1>");
-      function MenuItem(item, price) {
-        this.item = item;
-        this.price = price;
-      }
-      const menu3 = [
-        new MenuItem("hotdogs", 4),
-        new MenuItem("fries", 3.5),
-        new MenuItem("soda", 1.5),
-        new MenuItem("sauerkraut", 1),
-      ];
+      function showMenu(menu3) {
+        let menu = document.getElementById("menu");
 
-      document.write("<h2>Joe's Hotdogs Menu</h2>");
-      document.write("<ul>");
-      for (item in menu3) {
-        document.write(
-          "<li>" + menu3[item].item + " $" + menu3[item].price + "</li>",
-        );
+        let menuContent = "<ul>";
+        for (item in menu3) {
+          menuContent +=
+            "<li>" + menu3[item].item + " $" + menu3[item].price + "</li>";
+        }
+        menuContent += "</ul>";
+        menu.innerHTML = menuContent;
       }
-      document.write("</ul>");
-      document.write("<br><select id='select'>");
 
-      menu3.forEach((menuItem) => {
-        document.write(
-          "<option value='" +
+      function populateSelect(menuData) {
+        const select = document.getElementById("select");
+
+        let html = "";
+
+        menuData.forEach((menuItem) => {
+          html +=
+            "<option value='" +
             menuItem.price +
             "'>" +
             menuItem.item +
-            "</option>",
-        );
-      });
-      document.write("</select>");
+            "</option>";
+          // html += `<option value="${menuItem.item}">
+          //      ${menuItem.item} — $${menuItem.price}
+          //    </option>`;
+        });
 
-      // console.log(order);
+        select.innerHTML = html;
+      }
+      // function MenuItem(item, price) {
+      //   this.item = item;
+      //   this.price = price;
+      // }
+      // const menu3 = [
+      //   new MenuItem("hotdogs", 4),
+      //   new MenuItem("fries", 3.5),
+      //   new MenuItem("soda", 1.5),
+      //   new MenuItem("sauerkraut", 1),
+      // ];
 
-      // document.write("<br><button class='button'>Add to Cart</button>");
+      // document.write("<h2>Joe's Hotdogs Menu</h2>");
+      // document.write("<ul>");
+      // for (item in menu3) {
+      //   document.write(
+      //     "<li>" + menu3[item].item + " $" + menu3[item].price + "</li>",
+      //   );
+      // }
+      // document.write("</ul>");
+
+      ///////////////////////////////////////////////////////////////////////////
+      // document.write("<br><select id='select'>");
+      //       menu3.forEach((menuItem) => {
+      //         document.write(
+      //           "<option value='" +
+      //             menuItem.price +
+      //             "'>" +
+      //             menuItem.item +
+      //             "</option>",
+      //         );
+      //       });
+      //       document.write("</select>");
     </script>
   </head>
   <body>
-    <br />
-    <!-- <select>
-      <option value="4">hotdogs</option>
-      <option value="3.5">fries</option>
-      <option value="1.5">soda</option>
-      <option value="1">sauerkraut</option>
-    </select> -->
-    <button class="button" id="addToCart">Add to Cart</button>
-    <div class="cart">Cart is Empty</div>
-    <button class="button" id="checkout">Checkout</button>
+    <header>
+      <h1>Joe's Hotdogs</h1>
+    </header>
+    <main>
+      <h2>Menu</h2>
+      <div class="menu" id="menu"></div>
+      <select name="select" id="select"></select>
+      <button class="button" id="addToCart">Add to Cart</button>
+      <div class="cart">Cart is Empty</div>
+      <button class="button" id="checkout">Checkout</button>
+    </main>
+    <footer></footer>
   </body>
 </html>
