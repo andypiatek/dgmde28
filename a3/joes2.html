@@ -37,6 +37,7 @@
             order.sauerkraut++;
           }
           console.log(order);
+          console.log(`Active order: ${JSON.stringify(order)}`);
 
           // cart.innerHTML = JSON.stringify(order);
 
@@ -75,15 +76,23 @@
               bill += item + ": " + order[item] + "\n";
               // console.log(`Ordered items: ${bill}`);
             }
-          }
+          } // end of for loop
           alert(
             "*** Joe's Hodtogs Bill ***\n\n" +
               bill +
               "-------------\nTotal: $" +
               total.toFixed(2),
-          );
-        };
-      };
+          ); //end of alert
+
+          // Reset the order
+          for (item in order) {
+            order[item] = 0;
+          }
+          // console.log(`Order after reset: ${order}`);
+          console.log(`Order after reset: ${JSON.stringify(order)}`);
+          cart.innerHTML = "Cart is Empty";
+        }; // end of checkout button
+      }; //end of window.onload
 
       document.write("<h1>Part 5:  Using a class  </h1>");
       function MenuItem(item, price) {
