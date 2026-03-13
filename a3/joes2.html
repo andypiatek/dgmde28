@@ -3,28 +3,30 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Joe's Hot Dogs</title>
     <style>
       * {
         box-sizing: border-box;
         margin: 0;
+        padding: 0;
       }
       body {
         font-family:
           "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-        background-color: rgb(175, 226, 108);
+        background-color: rgb(128, 156, 92);
       }
       header {
         text-align: center;
         margin-top: 20px;
       }
-      h2 {
+      h1 {
         font-size: 2rem;
         text-align: center;
+        margin-top: 20px;
         margin-bottom: 10px;
       }
       main {
-        max-width: 300px;
+        max-width: 400px;
         margin: 20px auto;
         background: white;
         padding: 30px;
@@ -34,7 +36,11 @@
         list-style: none;
         text-align: center;
         font-size: 1.2rem;
-        padding: 0;
+        padding: 10px 0;
+        /* border: 1px solid red; */
+        border-radius: 6px;
+        background-color: #98c4ee;
+        margin-bottom: 10px;
       }
       .menu li {
         padding: 5px;
@@ -51,17 +57,16 @@
         cursor: pointer;
       }
       .selector {
-        width: 100%;
+        width: 55%;
         padding: 8px;
         font-size: 1rem;
         border-radius: 6px;
-        margin-top: 10px;
         text-align: center;
       }
       .cart {
         margin-top: 20px;
         padding: 8px;
-        border: 1px solid green;
+        border: 1px solid gray;
         border-radius: 6px;
         font-size: 1.2rem;
         text-align: center;
@@ -77,16 +82,17 @@
         margin-bottom: 20px;
         color: gray;
       }
+      .select-section {
+        margin-top: 20px;
+        display: flex;
+        align-items: center;
+        /* justify-items: center; */
+        gap: 20px;
+        font-size: 1.2rem;
+      }
     </style>
 
     <script>
-      let order = {
-        hotdogs: 0,
-        fries: 0,
-        soda: 0,
-        sauerkraut: 0,
-      };
-
       function MenuItem(item, price) {
         this.item = item;
         this.price = price;
@@ -98,7 +104,12 @@
         new MenuItem("sauerkraut", 1),
       ];
 
-      // let output = "";
+      let order = {
+        hotdogs: 0,
+        fries: 0,
+        soda: 0,
+        sauerkraut: 0,
+      };
 
       window.onload = function () {
         let cart = document.querySelector(".cart");
@@ -113,7 +124,6 @@
           let select = document.getElementById("select");
           // let selectedItem = select.selectedOptions[0].text;
           let selectedItem = select.options[select.selectedIndex].text; //Get the text from the selected option
-          // console.log("Selected option:", selectedOption);
           console.log("Selected item:", selectedItem);
 
           // Increase the count of the selected item
@@ -153,14 +163,14 @@
           let bill = "";
           for (item in order) {
             if (order[item] > 0) {
-              bill += item + ": " + order[item] + "\n";
+              bill += item + " x " + order[item] + "\n";
               // console.log(`Ordered items: ${bill}`);
             }
           } // end of for loop
           alert(
             "*** Joe's Hodtogs Bill ***\n\n" +
               bill +
-              "-------------\nTotal: $" +
+              "---------------\nTotal: $" +
               total.toFixed(2),
           ); //end of alert
 
@@ -186,7 +196,7 @@
         }
         menuContent += "</ul>";
         menu.innerHTML = menuContent;
-      }
+      } //end of showMenu()
 
       function populateSelect(menuData) {
         const select = document.getElementById("select");
@@ -203,17 +213,20 @@
         });
 
         select.innerHTML = html;
-      }
+      } //end of populateSelect()
     </script>
   </head>
   <body>
     <header></header>
     <main>
       <img src="joes-hotdogs.jpg" alt="Joe's Hot Dogs" class="image" />
-      <div class="caption">Source: http://joeshotdogsjoliet.com/history/</div>
-      <h2>Menu</h2>
+      <!-- <div class="caption">Source: http://joeshotdogsjoliet.com/history/</div> -->
+      <h1>Menu</h1>
       <div class="menu" id="menu"></div>
-      <select name="select" class="selector" id="select"></select>
+      <div class="select-section">
+        <label for="select">Select an item:</label>
+        <select name="select" class="selector" id="select"></select>
+      </div>
       <button class="button" id="addToCart">Add to Cart</button>
       <div class="cart">Cart is Empty</div>
       <button class="button" id="checkout">Checkout</button>
